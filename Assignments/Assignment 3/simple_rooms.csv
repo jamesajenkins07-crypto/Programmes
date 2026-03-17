@@ -1,0 +1,8 @@
+room_number,building,capacity,features
+3M 3250,3M Centre,168,dual_projector|document_camera|solstice|hdmi|microphone|classroom_computer|presenter_camera|continuous_tables
+AHB 1B02,Arts & Humanities Building,78,single_projector|document_camera|classroom_computer|solstice|hdmi|vga|microphone|continuous_tables
+AHB 1B04,Arts & Humanities Building,78,single_projector|document_camera|classroom_computer|solstice|hdmi|vga|microphone|continuous_tables
+FNB 1200,FIMS & Nursing Building,80,dual_projector|document_camera|presenter_camera|classroom_computer|solstice|hdmi|microphone|moveable_tables
+FNB 1220,FIMS & Nursing Building,80,dual_projector|document_camera|presenter_camera|classroom_computer|solstice|hdmi|microphone|moveable_tables
+HSB 9,Arthur & Sonia Labatt Health Sciences Building,50,dual_projector|presenter_camera|classroom_computer|solstice|hdmi|microphone|moveable_tables
+HSB 11,Arthur & Sonia Labatt Health Sciences Building,50,dual_projector|presenter_camera|classroom_computer|solstice|hdmi|microphone|continuous_tables
