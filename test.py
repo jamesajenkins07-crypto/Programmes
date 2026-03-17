@@ -1,17 +1,20 @@
 #!/bin/python3
 
-test = "hello world"
-insert = '1'
-place = "e"
-index = test.index(place)
+from random import choice
 
-half_test = test[:index]
-second_half = test[index + 1:]
+options = ["A", "B", "C", "D", "E"]
+while True:
+    num_questions = input("Number of questions: ")
 
-new = half_test + insert+ second_half
+    if num_questions.isdecimal():
+        if int(num_questions) > 0:
+            break
+        else:
+            print("Error: Inalid input, try again!")
+            continue
+    else:
+        print("Error: Invalid input, try again!")
+        continue
 
-print(test)
-print(half_test)
-print(second_half)
-print(new)
-print(index)
+for question in range(1, (int(num_questions)+1)):
+    print(f"{question}. {choice(options)}")
