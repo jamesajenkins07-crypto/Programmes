@@ -1,0 +1,11 @@
+record_type,patient_id,name,age,conditions,session_id,date,title,artist,bpm,genre,heart_rate,bp_systolic,bp_diastolic,o2_saturation,timestamp
+patient,P001,Kevin McCallister,29,asthma,,,,,,,,,,,
+session,P001,,,,session_001,2024-03-10,,,,,,,,,
+song,P001,,,,session_001,,Eye of the Tiger,Survivor,109,rock,,,,,
+song,P001,,,,session_001,,Mr. Brightside,The Killers,148,rock,,,,,
+song,P001,,,,session_001,,Seven Nation Army,The White Stripes,124,rock,,,,,
+song,P001,,,,session_001,,Don't Stop the Music,Rihanna,171,pop,,,,,
+vital,P001,,,,session_001,,,,,,85,117,75,98.1,2024-03-10 09:00
+vital,P001,,,,session_001,,,,,,93,120,77,97.9,2024-03-10 09:15
+vital,P001,,,,session_001,,,,,,87,118,76,98.0,2024-03-10 09:30
+vital,P001,,,,session_001,,,,,,98,122,78,97.7,2024-03-10 09:45

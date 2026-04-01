@@ -1,0 +1,21 @@
+record_type,patient_id,name,age,conditions,session_id,date,title,artist,bpm,genre,heart_rate,bp_systolic,bp_diastolic,o2_saturation,timestamp
+patient,P002,Buck Russell,41,hypertension|diabetes,,,,,,,,,,,
+session,P002,,,,session_001,2024-03-12,,,,,,,,,
+song,P002,,,,session_001,,Eye of the Tiger,Survivor,109,rock,,,,,
+song,P002,,,,session_001,,Mr. Brightside,The Killers,148,rock,,,,,
+song,P002,,,,session_001,,Seven Nation Army,The White Stripes,124,rock,,,,,
+song,P002,,,,session_001,,Don't Stop the Music,Rihanna,171,pop,,,,,
+vital,P002,,,,session_001,,,,,,81,149,94,96.4,2024-03-12 09:00
+vital,P002,,,,session_001,,,,,,89,152,96,96.2,2024-03-12 09:15
+vital,P002,,,,session_001,,,,,,400,148,94,96.5,2024-03-12 09:22
+vital,P002,,,,session_001,,,,,,83,150,95,96.3,2024-03-12 09:30
+vital,P002,,,,session_001,,,,,,94,154,97,96.0,2024-03-12 09:45
+session,P002,,,,session_002,2024-03-19,,,,,,,,,
+song,P002,,,,session_002,,Shake It Off,Taylor Swift,160,pop,,,,,
+song,P002,,,,session_002,,Levitating,Dua Lipa,103,pop,,,,,
+song,P002,,,,session_002,,Uptown Funk,Bruno Mars,115,pop,,,,,
+song,P002,,,,session_002,,Gangnam Style,Psy,104,pop,,,,,
+vital,P002,,,,session_002,,,,,,90,152,96,96.1,2024-03-19 09:00
+vital,P002,,,,session_002,,,,,,80,148,94,96.4,2024-03-19 09:15
+vital,P002,,,,session_002,,,,,,82,149,94,96.4,2024-03-19 09:30
+vital,P002,,,,session_002,,,,,,81,149,94,96.4,2024-03-19 09:45
