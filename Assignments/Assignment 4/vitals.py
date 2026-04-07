@@ -14,66 +14,69 @@ class Vitals:
         # Then initializes all private attributes.
         # blood_pressure must be stored as a tuple.
         if 1 <= heart_rate <= 300:
-            self.heart_rate = heart_rate
+            self._heart_rate = heart_rate
         else:
             raise ValueError(f"Invalid heart rate: {heart_rate}. Must be between 1 and 300")
 
         if 40 <= blood_pressure[0] <= 300:
-            self.blood_pressure = blood_pressure
+            if 20 <= blood_pressure[1] <= 200:
+                    self._blood_pressure = blood_pressure
+            else:
+                raise ValueError(f"Invalid diastolic pressure: {blood_pressure[1]}. Must be between 20 and 200.")
         else:
             raise ValueError(f"Invalid systolic pressure: {blood_pressure[0]}. Must be between 40 and 300.")
 
-        if 20 <= blood_pressure[1] <= 200:
-            self.o2_saturation = o2_saturation
-        else:
-            raise ValueError(f"Invalid diastolic pressure: {blood_pressure[1]}. Must be between 20 and 200.")
         if 50 <= o2_saturation <= 100:
-            self.timestamp = timestamp
+            self._o2_saturation = o2_saturation
         else:
             raise ValueError(f"Invalid O2 saturation: {o2_saturation}. Must be between 50.0 and 100.0")
+        
+        self._timestamp = timestamp
 
     def get_heart_rate(self):
-        return self.heart_rate
+        return self._heart_rate
 
     def get_blood_pressure(self):
-        return self.blood_pressure
+        return self._blood_pressure
 
     def get_o2_saturation(self):
-        return self.o2_saturation
+        return self._o2_saturation
 
     def get_timestamp(self):
-        return self.timestamp
+        return self._timestamp
 
     def is_abnormal(self):
         # Returns True if any value is outside the normal range (see Part 3).
-        if not 60 <= self.heart_rate <= 100:
+        if not 60 <= self._heart_rate <= 100:
             return True
-        elif not 90 <= self.blood_pressure[0] <= 140:
+        elif not 90 <= self._blood_pressure[0] <= 140:
             return True
-        elif not 60 <= self.blood_pressure[1] <= 90:
+        elif not 60 <= self._blood_pressure[1] <= 90:
             return True
-        elif not 95 <= self.o2_saturation:
+        elif not 95 <= self._o2_saturation:
             return True
         else:
             return False
-        
 
     def __str__(self):
         # Returns: "HR: <hr> bpm | BP: <sys>/<dia> | O2: <o2>% | <timestamp>"
-        return f"HR: {self.heart_rate} bpm | BP: {self.blood_pressure[0]} / {self.blood_pressure[1]} | O2: {self.o2_saturation}% | {self.timestamp}"
+        return f"HR: {self._heart_rate} bpm | BP: {self._blood_pressure[0]} / {self._blood_pressure[1]} | O2: {self._o2_saturation}% | {self._timestamp}"
 
     def __repr__(self):
-        return f"Vitals({self.heart_rate}, {self.blood_pressure}, {self.o2_saturation}, '{self.timestamp}')"
+        return f"Vitals({self._heart_rate}, {self._blood_pressure}, {self._o2_saturation}, '{self._timestamp}')"
 
     def __eq__(self, other):
         # Returns True if all four values match.
-        return self.heart_rate == other.heart_rate and self.blood_pressure == other.blood_pressure and self.o2_saturation == other.o2_saturation and self.timestamp == other.timestamp
+        return (self._heart_rate == other._heart_rate and 
+        self._blood_pressure == other._blood_pressure and 
+        self._o2_saturation == other._o2_saturation and 
+        self._timestamp == other._timestamp)
 
     def __lt__(self, other):
         # Returns True if this reading's heart rate is lower than the other's.
-        return self.heart_rate < other.heart_rate
+        return self._heart_rate < other._heart_rate
 
     def __gt__(self, other):
         # Returns True if this reading's heart rate is greater than the other's.
-        return self.heart_rate > other.heart_rate
-
+        return self._heart_rate > other._heart_rate
+    
