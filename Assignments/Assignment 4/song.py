@@ -32,4 +32,4 @@ class Song:
         return f"Song('{self.title}', '{self.artist}', {self.bpm}, {self.genre})"
 
     def __eq__(self, other):
-        return self.title == other.title and self.title == other.title
+        return self.title == other.title and self.artist == other.artist
