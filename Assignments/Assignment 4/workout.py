@@ -8,40 +8,58 @@
 from song import Song
 from vitals import Vitals
 
+
 class Workout:
 
+    # Description: Initialises a new Workout instance with the given values.
+    # Parameters: session_id (string), date (string)
+    # Returns: None
     def __init__(self, session_id, date):
-        # Initialises session_id and date.
-        # _playlist and _log start as empty lists.
-
         self._session_id = session_id
         self._date = date
         self._playlist = []
         self._log = []
 
+    # Description: Returns the session_id string.
+    # Parameters: None
+    # Returns: session_id (string)
     def get_session_id(self):
         return self._session_id
 
+    # Description: Returns the date string.
+    # Parameters: None
+    # Returns: date (string)
     def get_date(self):
         return self._date
 
+    # Description: Returns a copy of the playlist.
+    # Parameters: None
+    # Returns: list of Song objects
     def get_playlist(self):
-        # Returns a copy of the playlist.
-        return self._playlist
+        return self._playlist.copy()
 
+    # Description: Returns a copy of the vitals log.
+    # Parameters: None
+    # Returns: list of Vitals objects
     def get_log(self):
-        # Returns a copy of the vitals log.
-        return self._log
+        return self._log.copy()
 
+    # Description: Adds a Song to the playlist.
+    # Parameters: song (Song)
+    # Returns: None
     def add_song(self, song):
         self._playlist.append(song)
 
+    # Description: Adds a Vitals object to the log.
+    # Parameters: vitals (Vitals)
+    # Returns: None
     def add_vital(self, vitals):
         self._log.append(vitals)
 
+    # Description: Returns the average heart rate across all vitals readings in the log.
+    # Parameters: None
+    # Returns: average heart rate (float), or None if the log is empty
     def get_average_heart_rate(self):
-        # Returns the average heart rate, or None if the log is empty.
-
         sum_rate = 0
 
         if self._log == []:
@@ -49,21 +67,24 @@ class Workout:
 
         for vital in self._log:
             sum_rate += vital.get_heart_rate()
-    
 
         return sum_rate / len(self._log)
 
+    # Description: Returns a set of unique genre strings from the playlist.
+    # Parameters: None
+    # Returns: set of unique genre strings
     def get_unique_genres(self):
-        # Returns a set of unique genre strings from the playlist.
         genres_set = set()
 
         for song in self._playlist:
-            genres_set.add(song.get_genre())    
+            genres_set.add(song.get_genre())
 
         return genres_set
 
+    # Description: Returns a list of Vitals objects for which is_abnormal() is True.
+    # Parameters: None
+    # Returns: list of Vitals objects with abnormal readings
     def get_abnormal_readings(self):
-        # Returns a list of Vitals objects for which is_abnormal() is True.
         abnormalities = []
 
         for vital in self._log:
@@ -72,42 +93,35 @@ class Workout:
 
         return abnormalities
 
+    # Description: Divides the vitals log into equal segments, one per song.
+    # Parameters: None
+    # Returns: list of (Song, [Vitals]) tuples, or None if the playlist or log is empty
     def get_segments(self):
-        # Divides the vitals log into equal segments, one per song.
-        # Returns a list of (Song, [Vitals]) tuples.
-        # Returns None if the playlist or log is empty.
-        # Divides the vitals log into equal segments, one per song.
-        # Returns None if the playlist or log is empty.
-      
         if not self._playlist or not self._log:
             return None
 
         n_songs = len(self._playlist)
         n_readings = len(self._log)
-        
-        # Calculate base size and the remainder to distribute.
+
         base_size = n_readings // n_songs
         remainder = n_readings % n_songs
-        
+
         segmentation = []
         current_pos = 0
-        
-        for i in range(n_songs):
-            # First 'remainder' songs receive one extra reading.
-            size = base_size + (1 if i < remainder else 0)
-            
-            # Slice the log to group Vitals into a list for this Song[cite: 405, 664].
-            segment_vitals = self._log[current_pos : current_pos + size]
-            segmentation.append((self._playlist[i], segment_vitals))
-            
-            current_pos += size
-            
-        return segmentation
-    
-    def get_peak_heart_rate_song(self):
-        # Returns the Song with the highest average HR segment (see Part 5).
-        # Returns None if playlist or log is empty. 
 
+        for i in range(n_songs):
+            size = base_size + (1 if i < remainder else 0)
+            segment_vitals = self._log[current_pos:current_pos + size]
+            segmentation.append((self._playlist[i], segment_vitals))
+            current_pos += size
+
+        return segmentation
+
+    # Description: Returns the Song that corresponds to the segment with the
+    # highest average heart rate, or None if no segments.
+    # Parameters: None
+    # Returns: peak_song (Song) or None
+    def get_peak_heart_rate_song(self):
         info = self.get_segments()
 
         if not info:
@@ -117,7 +131,6 @@ class Workout:
         highest_avg = -1
 
         for song, segment in info:
-            # Compute the average heart rate for this specific segment.
             total_hr = sum(v.get_heart_rate() for v in segment)
             avg_hr = total_hr / len(segment)
 
@@ -127,13 +140,20 @@ class Workout:
 
         return peak_song
 
+    # Description: Returns a string representation of the workout.
+    # Parameters: None
+    # Returns: string in format "<session_id> on <date>: <n> songs, <n> readings"
     def __str__(self):
-        # Format: "<session_id> on <date>: <n> songs, <n> readings"
         return f"{self._session_id} on {self._date}: {len(self._playlist)} songs, {len(self._log)} readings"
 
+    # Description: Returns a string representation of the workout for debugging.
+    # Parameters: None
+    # Returns: string in format "Workout('<session_id>', '<date>')"
     def __repr__(self):
-        return f"Workout('{self._session_id}', {self._date})"
+        return f"Workout('{self._session_id}', '{self._date}')"
 
+    # Description: Two Workout instances are equal if they have the same session_id.
+    # Parameters: other (Workout)
+    # Returns: True if self and other have the same session_id, False otherwise.
     def __eq__(self, other):
-        # Two Workouts are equal if their session_id matches.
         return self._session_id == other._session_id
