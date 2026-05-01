@@ -1,0 +1,17 @@
+============================================================
+Patient: Kevin McCallister
+Age: 29
+Conditions: asthma
+------------------------------------------------------------
+SESSION: session_001  |  Date: 2024-03-10
+
+  Playlist:1. "Eye of the Tiger" by Survivor (109 bpm, rock)1. "Mr. Brightside" by The Killers (148 bpm, rock)1. "Seven Nation Army" by The White Stripes (124 bpm, rock)1. "Don't Stop the Music" by Rihanna (171 bpm, pop)Genres this session: pop, rock
+Average heart rate: 90.75
+Abnormal readings: []
+
+
+------------------------------------------------------------
+SUMMARY------------------------------------------------------------
+Overall average heart rate: 90.75 bpmMost frequent genre: rockWorst session (most abnormal readings): session_001 on 2024-03-10: 4 songs, 4 readings
+Heart rate trend (oldest to newest):
+2024-03-10: 90.75 bpm============================================================
